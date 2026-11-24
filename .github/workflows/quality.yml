@@ -1,0 +1,62 @@
+name: quality
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate skills, JSON and README links
+        run: |
+          python3 - <<'EOF'
+          import glob, json, os, re, sys
+
+          errors = []
+
+          for path in sorted(glob.glob("skills/*/SKILL.md")):
+              text = open(path, encoding="utf-8").read()
+              m = re.match(r"---\n(.*?)\n---", text, re.S)
+              if not m:
+                  errors.append(f"{path}: missing YAML frontmatter")
+                  continue
+              front = m.group(1)
+              if "name:" not in front:
+                  errors.append(f"{path}: frontmatter missing name:")
+              if "description:" not in front:
+                  errors.append(f"{path}: frontmatter missing description:")
+                  continue
+              desc = re.search(r"description:\s*(.*)", front).group(1).strip()
+              if len(desc) > 1024:
+                  errors.append(f"{path}: description is {len(desc)} chars (max 1024)")
+
+          for path in sorted(glob.glob("**/*.json", recursive=True)):
+              if ".git/" in path:
+                  continue
+              try:
+                  json.load(open(path, encoding="utf-8"))
+              except Exception as exc:
+                  errors.append(f"{path}: invalid JSON ({exc})")
+
+          readme = open("README.md", encoding="utf-8").read()
+          for link in sorted(set(re.findall(r"\(([^)]+\.md[^)]*)\)", readme))):
+              target = link.split("#")[0]
+              if target.startswith("http"):
+                  continue
+              if not os.path.exists(target):
+                  errors.append(f"README.md: link target missing: {target}")
+
+          if errors:
+              print("FAIL: quality checks failed")
+              for e in errors:
+                  print(f"  - {e}")
+              sys.exit(1)
+          print("PASS: all quality checks passed")
+          EOF
