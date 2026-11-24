@@ -20,6 +20,8 @@ Working code in the wrong place, or code that bypasses the framework, is a defec
 4. **Server vs client**: rules and validation go on the server. JS is UX only. Never enforce a rule in JS alone.
 5. **App vs Server Script**: if a custom app exists, use it. Server Scripts only when there is UI-only
    access and the logic is short -> use the **frappe-server-scripts** skill (NO imports).
+6. **New fields**: read the DocType's current field list first; place with `references/field-layout.md`
+   (Section/Column/Tab Break, field order, child tables).
 
 ## Placement rules
 
@@ -30,7 +32,7 @@ Working code in the wrong place, or code that bypasses the framework, is a defec
 | Child table events | same parent `.js`, separate `frappe.ui.form.on("Child", {...})` | same override file |
 | Validation / business logic | controller methods (`validate`, `on_submit`...) | `doc_events` -> `<app>/<module>/overrides/<name>.py`; on v16 prefer `extend_doctype_class` |
 | Methods called from form | `@frappe.whitelist()` on controller, `frm.call()` | whitelisted function in overrides, `frappe.call()` |
-| Extra fields | - | Custom Field / Property Setter as **fixtures** filtered by module |
+| Extra fields | - | Custom Field / Property Setter as **fixtures** filtered by module; layout per `references/field-layout.md` |
 | Data fixes | `patches/` + `patches.txt` | same |
 
 Never edit other apps' files. Never put our DocType's form code in `public/js`.
@@ -59,6 +61,7 @@ Never edit other apps' files. Never put our DocType's form code in `public/js`.
 | Python controllers, whitelist, DB, permissions | `references/server-patterns.md` |
 | JS forms, set_query, dialogs, child tables | `references/client-patterns.md` |
 | hooks.py, fixtures, custom fields, patches, scheduler | `references/hooks-and-customization.md` |
+| Field layout: Section/Column/Tab Break, field order, child tables | `references/field-layout.md` |
 | Before finishing | `references/review-checklist.md` |
 
 ## Other branches (separate skills, load only for that task)

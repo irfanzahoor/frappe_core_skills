@@ -41,3 +41,7 @@ Use `frappe.prompt` for one field and `frappe.confirm` for yes/no. Use Frappe fi
 Use for portal-like apps (like Helpdesk/CRM): `<app>/frontend` with Vite and the `frappe-ui` library,
 calling `/api/method/...` through `createResource`. Build output goes to `<app>/public/frontend`, with a
 www route for the SPA. Use it only when Desk can't do the job.
+
+## Form field layout
+- Field order, Section/Column/Tab Breaks and child-table grids are form layout, not just
+  code: follow the `frappe-core` skill's `references/field-layout.md` before adding fields.
