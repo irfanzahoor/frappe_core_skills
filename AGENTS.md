@@ -22,3 +22,6 @@ This works with Claude, Codex, Cursor, Gemini, Copilot and others.
 | Workspaces, dashboards, Pages, dialogs | `skills/frappe-ui/SKILL.md` |
 
 Don't read branches the task doesn't need. That keeps token use low.
+
+For project setup, copy `templates/CLAUDE.md` into the Frappe project root and fill
+in the project facts there.

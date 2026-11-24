@@ -1,7 +1,1 @@
-{
-  "name": "frappe-best-skill",
-  "version": "2.0.0",
-  "description": "Branched Frappe/ERPNext v14-v16 skills: core rules plus focused branches for server scripts, reports, performance, upgrade, debug, testing and ops. Only the needed branch loads.",
-  "skills": "./skills/",
-  "license": "MIT"
-}
+{"author":{"name":"Muhammad Irfaan","url":"https://github.com/irfanzahoor"},"description":"Branched Frappe/ERPNext v14-v16 skills: core rules plus focused branches for server scripts, reports, performance, upgrade, debug, testing and ops. Only the needed branch loads.","displayName":"Frappe Best Skill","homepage":"https://github.com/irfanzahoor/frappe_core_skills","keywords":["frappe","erpnext","claude-code","coding-standards","code-review"],"license":"MIT","name":"frappe-best-skill","repository":"https://github.com/irfanzahoor/frappe_core_skills","skills":"./skills/","version":"2.1.0"}

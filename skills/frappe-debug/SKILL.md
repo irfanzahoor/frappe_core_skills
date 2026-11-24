@@ -6,6 +6,9 @@ description: Debug Frappe/ERPNext errors. Use when there is a traceback, error m
 # Error -> Cause -> Fix
 
 Check **Error Log** (desk) or `bench --site <site> console` / `logs/` first.
+Read the traceback bottom-up: the last frame is where it failed. For the
+workflow (reproduce, isolate, confirm) and worked fixes with code, read
+`references/common-errors.md`.
 
 | Error | Cause | Fix |
 |---|---|---|
