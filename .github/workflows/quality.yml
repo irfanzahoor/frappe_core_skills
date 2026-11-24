@@ -60,3 +60,78 @@ jobs:
               sys.exit(1)
           print("PASS: all quality checks passed")
           EOF
+      - name: Check relative links and markdown style
+        run: |
+          python3 - <<'EOF'
+          import glob, os, re, sys
+
+          errors = []
+
+          # (a) Relative .md links must resolve to a real file.
+          # Only real markdown links [text](target) are checked, not
+          # backtick references: many of those are files the user creates
+          # on their own machine (.cursor/rules/frappe.md, GEMINI.md)
+          # or placeholders (skills/<kebab-case-name>/SKILL.md).
+          link_files = (
+              sorted(glob.glob("skills/**/*.md", recursive=True))
+              + sorted(glob.glob("agents/*.md"))
+              + sorted(glob.glob("commands/*.md"))
+              + ["README.md"]
+          )
+          for path in link_files:
+              text = open(path, encoding="utf-8").read()
+              for link in sorted(set(re.findall(r"\[[^\]]*\]\(([^)]+)\)", text))):
+                  target = link.split("#")[0].strip()
+                  if not target or not target.endswith(".md"):
+                      continue
+                  if target.startswith(("http://", "https://", "mailto:")):
+                      continue
+                  base = os.path.dirname(path)
+                  if os.path.exists(os.path.join(base, target)):
+                      continue
+                  if os.path.exists(target):
+                      continue
+                  errors.append(f"{path}: relative link target missing: {target}")
+
+          # (b) Basic markdown lint: no trailing whitespace, headings
+          # in order (never jump more than one level, e.g. H1 -> H3).
+          # Fenced code blocks and YAML frontmatter are skipped.
+          for path in sorted(glob.glob("**/*.md", recursive=True)):
+              if ".git/" in path:
+                  continue
+              lines = open(path, encoding="utf-8").read().splitlines()
+              in_fence = False
+              in_frontmatter = False
+              prev_level = 0
+              for i, line in enumerate(lines, 1):
+                  stripped = line.strip()
+                  if i == 1 and stripped == "---":
+                      in_frontmatter = True
+                      continue
+                  if in_frontmatter:
+                      if stripped == "---":
+                          in_frontmatter = False
+                      continue
+                  if stripped.startswith("```"):
+                      in_fence = not in_fence
+                      continue
+                  if in_fence:
+                      continue
+                  if line != line.rstrip():
+                      errors.append(f"{path}:{i}: trailing whitespace")
+                  m = re.match(r"^(#{1,6})\s", line)
+                  if m:
+                      level = len(m.group(1))
+                      if prev_level and level > prev_level + 1:
+                          errors.append(
+                              f"{path}:{i}: heading jumps H{prev_level} -> H{level}"
+                          )
+                      prev_level = level
+
+          if errors:
+              print("FAIL: link and markdown checks failed")
+              for e in errors:
+                  print(f"  - {e}")
+              sys.exit(1)
+          print("PASS: all link and markdown checks passed")
+          EOF
