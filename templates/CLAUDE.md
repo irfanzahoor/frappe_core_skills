@@ -24,7 +24,12 @@ This is a Frappe Framework / ERPNext project.
 | Workspaces, dashboards, Pages, dialogs, Vue SPA | `frappe-ui` |
 | Permissions, roles, User Permissions, 403 | `frappe-permissions` |
 | Scheduler events, background jobs, queues | `frappe-scheduler` |
-| ERPNext module flows (selling, buying, stock, manufacturing, accounts) | `frappe-erpnext-modules` |
+| ERPNext module flows (selling, buying, stock, manufacturing, accounts, HRMS, CRM, Helpdesk, Projects, Assets) | `frappe-erpnext-modules` |
+| Studio visual app builder (v16.60) | `frappe-studio` |
+| Frappe Flow AI workflows | `frappe-flow` |
+| Insights BI, dashboards, queries | `frappe-insights` |
+| Security audit | `frappe-security` |
+| Data Import, bulk updates, migration | `frappe-data` |
 
 - Do not load branches the task does not need. That keeps token use low.
 - Do not use other skills for code in this repository unless I ask.

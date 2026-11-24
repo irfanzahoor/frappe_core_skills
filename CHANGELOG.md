@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-11-24
+
+### Added
+
+- New skills: `frappe-studio` (Studio visual app builder, v16.60), `frappe-flow` (AI workflow builder), `frappe-insights` (BI dashboards and queries), `frappe-security` (security audit), `frappe-data` (Data Import, bulk updates, migration).
+- New agents: `frappe-builder` (full feature from one prompt) and `frappe-doctor` (read-only site health check); new command `/frappe-new-field` (adds fields with the field-layout rules).
+- `frappe-upgrade` v15 → v16 breaking-changes reference (`references/upgrade-v15-v16.md`).
+- `frappe-erpnext-modules` now covers HRMS, CRM, Helpdesk, Projects and Assets.
+- Reference files for thin skills: testing patterns, query/index guide, backup/restore runbook.
+- README examples, FAQ and comparison table; issue and PR templates.
+- CI now checks relative Markdown links and markdown style (trailing whitespace, heading order).
+
+
 ## [2.2.1] - 2026-11-24
 
 ### Fixed

@@ -47,3 +47,13 @@ last method override wins. Event Streaming moved to its own app.
 | Blog, Newsletter, Energy Points, Offsite backups | Separate apps |
 | `/app` URL | `/desk` |
 | Runtime | Python 3.14+, Node 24+ |
+| Studio, Flow, Insights dashboards | New in v16.60 — see **frappe-studio**, **frappe-flow**, **frappe-insights** |
+
+Details, runtime requirements, and new v16 / v16.60 features:
+`references/upgrade-v15-v16.md`.
+
+## References
+
+| Task | File |
+|---|---|
+| v15 -> v16 breaking changes, runtime, new APIs and features | `references/upgrade-v15-v16.md` |

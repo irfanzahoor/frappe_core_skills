@@ -22,7 +22,12 @@ This works with Claude, Codex, Cursor, Gemini, Copilot and others.
 | Workspaces, dashboards, Pages, dialogs | `skills/frappe-ui/SKILL.md` |
 | Permissions, roles, User Permissions, 403 | `skills/frappe-permissions/SKILL.md` |
 | Scheduler events, background jobs, queues | `skills/frappe-scheduler/SKILL.md` |
-| ERPNext module flows (selling, stock, manufacturing) | `skills/frappe-erpnext-modules/SKILL.md` |
+| ERPNext module flows (selling, stock, manufacturing, HRMS, CRM, Helpdesk, Projects, Assets) | `skills/frappe-erpnext-modules/SKILL.md` |
+| Studio visual app builder (v16.60) | `skills/frappe-studio/SKILL.md` |
+| Frappe Flow AI workflows | `skills/frappe-flow/SKILL.md` |
+| Insights BI, dashboards, queries | `skills/frappe-insights/SKILL.md` |
+| Security audit | `skills/frappe-security/SKILL.md` |
+| Data Import, bulk updates, migration | `skills/frappe-data/SKILL.md` |
 
 Don't read branches the task doesn't need. That keeps token use low.
 
