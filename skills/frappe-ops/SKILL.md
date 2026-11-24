@@ -56,3 +56,10 @@ listed in `apps.json`, and keep sites and the DB in volumes.
 
 ## Frappe Cloud
 There are no Server Scripts on shared benches, and no shell. Deploy custom apps from a Git repo through the dashboard.
+
+### Frappe Cloud rules
+- Make a manual backup before major changes, and keep your own off-platform copies.
+- Test app updates on a staging site first.
+- Custom domain: add a CNAME (never transfer DNS). SSL can take time after DNS propagates.
+- Change site config through the dashboard, not by editing files.
+- Use `pause_scheduler` instead of disabling the scheduler. Turn on maintenance mode for big imports.

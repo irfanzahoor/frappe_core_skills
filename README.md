@@ -13,9 +13,15 @@ split into focused **branches**. Each task loads only its own branch.
 | `frappe-upgrade` | v14 -> v15 -> v16 API changes, upgrades |
 | `frappe-debug` | Error -> cause -> fix |
 | `frappe-testing` | Unit/integration tests, CI |
-| `frappe-ops` | bench, deploy, backup/restore |
+| `frappe-ops` | bench, deploy, backup/restore, Frappe Cloud |
+| `frappe-architect` | Plan features/apps, data model, customize vs build |
+| `frappe-workflow` | Workflows, approvals |
+| `frappe-notifications` | Email, Notification rules, realtime |
+| `frappe-integrations` | REST API, webhooks, OAuth, Data Import |
+| `frappe-website` | Website, portal, Web Forms |
+| `frappe-ui` | Workspaces, dashboards, Pages, dialogs, Vue SPA |
 
-**Tokens:** at session start only 8 one-line descriptions load. A skill's body loads only when
+**Tokens:** at session start only 14 one-line descriptions load. A skill's body loads only when
 its task comes up.
 
 ## Install
@@ -24,7 +30,3 @@ its task comes up.
 - **Codex / Cursor / Gemini / Copilot**: copy the folder into the repo and keep `AGENTS.md` at the root.
   Or copy or symlink it as `CLAUDE.md`, `GEMINI.md`, `.cursor/rules/frappe.md` or `.github/copilot-instructions.md`.
 - **Claude.ai Projects**: upload `frappe-core/SKILL.md` plus the branches you need as knowledge.
-# frappe_core_skills
-# frappe_core_skills
-# frappe_core_skills
-# frappe_core_skills

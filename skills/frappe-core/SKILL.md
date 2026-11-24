@@ -71,7 +71,13 @@ Never edit other apps' files. Never put our DocType's form code in `public/js`.
 | v14/v15/v16 APIs, upgrading | frappe-upgrade |
 | Error / traceback | frappe-debug |
 | Tests, CI | frappe-testing |
-| bench, deploy, backup | frappe-ops |
+| bench, deploy, backup, Frappe Cloud | frappe-ops |
+| New feature / app design, "how to build X" | frappe-architect |
+| Workflows, approvals | frappe-workflow |
+| Email, Notification rules, realtime | frappe-notifications |
+| REST API, webhooks, OAuth, external APIs, Data Import | frappe-integrations |
+| Website, portal, Web Forms, www pages | frappe-website |
+| Workspaces, dashboards, custom Pages, dialogs, Vue SPA | frappe-ui |
 
 ## Finishing
 

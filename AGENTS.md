@@ -14,5 +14,11 @@ This works with Claude, Codex, Cursor, Gemini, Copilot and others.
 | Errors, tracebacks | `skills/frappe-debug/SKILL.md` |
 | Tests, CI | `skills/frappe-testing/SKILL.md` |
 | bench, deploy, backup | `skills/frappe-ops/SKILL.md` |
+| Design a feature / app | `skills/frappe-architect/SKILL.md` |
+| Workflows, approvals | `skills/frappe-workflow/SKILL.md` |
+| Email, notifications, realtime | `skills/frappe-notifications/SKILL.md` |
+| REST API, webhooks, OAuth, Data Import | `skills/frappe-integrations/SKILL.md` |
+| Website, portal, Web Forms | `skills/frappe-website/SKILL.md` |
+| Workspaces, dashboards, Pages, dialogs | `skills/frappe-ui/SKILL.md` |
 
 Don't read branches the task doesn't need. That keeps token use low.
