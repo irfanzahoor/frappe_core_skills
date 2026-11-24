@@ -20,6 +20,9 @@ This works with Claude, Codex, Cursor, Gemini, Copilot and others.
 | REST API, webhooks, OAuth, Data Import | `skills/frappe-integrations/SKILL.md` |
 | Website, portal, Web Forms | `skills/frappe-website/SKILL.md` |
 | Workspaces, dashboards, Pages, dialogs | `skills/frappe-ui/SKILL.md` |
+| Permissions, roles, User Permissions, 403 | `skills/frappe-permissions/SKILL.md` |
+| Scheduler events, background jobs, queues | `skills/frappe-scheduler/SKILL.md` |
+| ERPNext module flows (selling, stock, manufacturing) | `skills/frappe-erpnext-modules/SKILL.md` |
 
 Don't read branches the task doesn't need. That keeps token use low.
 

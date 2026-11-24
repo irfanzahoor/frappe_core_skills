@@ -22,6 +22,9 @@ This is a Frappe Framework / ERPNext project.
 | REST API, webhooks, OAuth, Data Import | `frappe-integrations` |
 | Website, portal, Web Forms | `frappe-website` |
 | Workspaces, dashboards, Pages, dialogs, Vue SPA | `frappe-ui` |
+| Permissions, roles, User Permissions, 403 | `frappe-permissions` |
+| Scheduler events, background jobs, queues | `frappe-scheduler` |
+| ERPNext module flows (selling, buying, stock, manufacturing, accounts) | `frappe-erpnext-modules` |
 
 - Do not load branches the task does not need. That keeps token use low.
 - Do not use other skills for code in this repository unless I ask.

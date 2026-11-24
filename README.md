@@ -17,7 +17,7 @@ that can never run. This package gives the assistant the rules a senior Frappe
 developer would enforce — in the right file, with the framework's own APIs — and
 only loads the rules for the task at hand.
 
-**Tokens:** at session start only 14 one-line descriptions load. A skill's body loads only when
+**Tokens:** at session start only 17 one-line descriptions load. A skill's body loads only when
 its task comes up.
 
 > [!NOTE]
@@ -43,10 +43,40 @@ its task comes up.
 | `frappe-integrations` | REST API, webhooks, OAuth, Data Import |
 | `frappe-website` | Website, portal, Web Forms |
 | `frappe-ui` | Workspaces, dashboards, Pages, dialogs, Vue SPA |
+| `frappe-permissions` | Roles, User Permissions, `has_permission`, sharing, 403s |
+| `frappe-scheduler` | Scheduler events, background jobs, queues, job health |
+| `frappe-erpnext-modules` | Selling, buying, stock, manufacturing and accounts flows |
+
+## Version compatibility
+
+| Feature | v14 | v15 | v16 |
+|---|:---:|:---:|:---:|
+| Type annotations | ❌ | ✅ | ✅ |
+| UUID autoname | ❌ | ✅ | ✅ |
+| Data masking (`mask` on fields) | ❌ | ❌ | ✅ |
+| `extend_doctype_class` hook | ❌ | ❌ | ✅ |
+| `has_permission` must return explicit `True` | ❌ | ❌ | ✅ |
+| DB commit inside document hooks | ✅ | ✅ | ❌ |
+| Server Scripts enabled by default | ✅ | ❌ | ❌ |
+| `/app` URL | ✅ | ✅ | ❌ (now `/desk`) |
+| PDF via wkhtmltopdf | ✅ | ✅ | ❌ (Chrome renderer) |
+
+Full version-change tables live in the `frappe-upgrade` skill.
+
+## Agents and commands
+
+Available when the plugin is installed in Claude Code (not with a manual copy):
+
+| Agent / command | Does |
+|---|---|
+| `frappe-reviewer` (agent) | Reviews Frappe code against the `frappe-core` rules, outputs a severity-ordered findings table |
+| `frappe-migrator` (agent) | Plans a v14 -> v15 -> v16 upgrade: deprecated APIs, patches, backup, test plan |
+| `/frappe-review` | Review a file or folder (defaults to git-changed files) |
+| `/frappe-upgrade-check` | Scan the project for removed APIs for a target version (default v16) |
 
 ## Install
 
-### Claude Code — plugin marketplace (new in v2.1.0)
+### Claude Code — plugin marketplace
 
 ```bash
 claude plugin marketplace add irfanzahoor/frappe_core_skills
@@ -55,7 +85,8 @@ claude plugin install frappe-best-skill@irfanzahoor
 
 Keep it up to date with `/plugin` in Claude Code → **Marketplaces** → `irfanzahoor`
 → **Enable auto-update**. If the marketplace command is rejected, use the manual
-install below — it works the same way.
+install below — it works the same way. To validate a local copy, run
+`claude plugin validate` in the repo.
 
 ### Claude Code — manual
 
@@ -87,11 +118,21 @@ Spot a mistake Claude keeps making in that one project? Add a line under
 ```
 .
 ├── AGENTS.md                          Rules for any AI assistant (Claude, Codex, Cursor, ...)
+├── CHANGELOG.md                       Version history
+├── CONTRIBUTING.md                    How to add or fix a skill
 ├── templates/
 │   └── CLAUDE.md                      Project template — copy into your Frappe project
 ├── .claude-plugin/
-│   ├── plugin.json                    Claude Code plugin (v2.1.0)
+│   ├── plugin.json                    Claude Code plugin (v2.2.0)
 │   └── marketplace.json               Plugin marketplace entry
+├── .github/workflows/
+│   └── quality.yml                    Validates skill frontmatter, JSON and README links
+├── agents/
+│   ├── frappe-reviewer.md             Code-review agent
+│   └── frappe-migrator.md             Upgrade-planning agent
+├── commands/
+│   ├── frappe-review.md               /frappe-review
+│   └── frappe-upgrade-check.md        /frappe-upgrade-check
 └── skills/
     ├── frappe-core/                   Core rules + references (placement, patterns, review)
     │   └── references/
@@ -103,10 +144,24 @@ Spot a mistake Claude keeps making in that one project? Add a line under
     ├── frappe-debug/
     │   └── references/
     │       └── common-errors.md       Debug workflow + worked fixes
-    └── frappe-server-scripts/ ...     12 more focused branches
+    ├── frappe-permissions/
+    │   └── references/
+    │       └── permission-debugging.md
+    └── frappe-server-scripts/ ...     14 more focused branches
 ```
 
 The skills are plain Markdown. They run no scripts, make no network calls and collect no data.
+
+## What's new in v2.2.0
+
+- New skills: `frappe-permissions` (roles, User Permissions, sharing, 403 debugging),
+  `frappe-scheduler` (scheduler events, queues, job health) and `frappe-erpnext-modules`
+  (selling, buying, stock, manufacturing, accounts flows).
+- New agents: `frappe-reviewer` and `frappe-migrator`; new commands `/frappe-review`
+  and `/frappe-upgrade-check`.
+- `CHANGELOG.md`, `CONTRIBUTING.md` and a CI quality workflow (`.github/workflows/quality.yml`).
+- LICENSE copyright fixed to Muhammad Irfaan.
+- README version-compatibility table (v14/v15/v16).
 
 ## What's new in v2.1.0
 
