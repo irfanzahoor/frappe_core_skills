@@ -1,0 +1,7 @@
+{
+  "name": "frappe-best-skill",
+  "version": "2.0.0",
+  "description": "Branched Frappe/ERPNext v14-v16 skills: core rules plus focused branches for server scripts, reports, performance, upgrade, debug, testing and ops. Only the needed branch loads.",
+  "skills": "./skills/",
+  "license": "MIT"
+}
