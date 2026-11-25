@@ -1,6 +1,6 @@
 ---
 name: frappe-server-scripts
-description: Frappe/ERPNext Server Scripts (Setup > Server Script, RestrictedPython sandbox). Use when writing or fixing a Server Script: Document Event, API, Scheduler or Permission Query. Covers no-import rule, sandbox limits, event name mapping.
+description: "Frappe/ERPNext Server Scripts (Setup > Server Script, RestrictedPython sandbox). Use when writing or fixing a Server Script: Document Event, API, Scheduler or Permission Query. Covers no-import rule, sandbox limits, event name mapping."
 ---
 
 # Server Scripts (Setup > Server Script)
