@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-11-27
+
+### Added
+
+- New skill: `frappe-code-review` — the 79 deterministic review checks from Frappe Sensei (FR-001–FR-082: placement, APIs, security, performance, server vs client) as the agent-usable checklist, with a pointer to the canonical rules in `irfanzahoor/frappe-sensei` and the live tool at https://irfanzahoor.github.io/frappe-sensei/.
+- `frappe-reviewer` agent and `/frappe-review` command now use the `frappe-code-review` skill and its 79-rule table instead of the smaller `frappe-core` checklist.
+
 ## [2.3.0] - 2026-11-24
 
 ### Added

@@ -9,6 +9,7 @@ This is a Frappe Framework / ERPNext project.
 
 | Task | Load |
 |---|---|
+| Review code before merge or ship | `frappe-code-review` |
 | Server Script in the UI (sandbox, no imports) | `frappe-server-scripts` |
 | Script/Query reports, print formats, Jinja | `frappe-reports-print` |
 | Slow code, N+1, caching, background jobs | `frappe-performance` |
@@ -33,8 +34,8 @@ This is a Frappe Framework / ERPNext project.
 
 - Do not load branches the task does not need. That keeps token use low.
 - Do not use other skills for code in this repository unless I ask.
-- Before finishing a task, run the review checklist in `frappe-core`
-  (`skills/frappe-core/references/review-checklist.md`).
+- Before finishing a task, run the review in `frappe-code-review`
+  (`skills/frappe-code-review/SKILL.md`) — the 79-rule checklist.
 
 ## Project facts
 

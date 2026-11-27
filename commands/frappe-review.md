@@ -1,5 +1,5 @@
 ---
-description: Review Frappe/ERPNext code against the frappe-core rules and output a findings table.
+description: Review Frappe/ERPNext code against the frappe-code-review skill (Sensei's 79 checks) and output a findings table.
 ---
 
 Review the Frappe/ERPNext code at `$ARGUMENTS`.
@@ -9,8 +9,10 @@ Review the Frappe/ERPNext code at `$ARGUMENTS`.
 
 ## How to review
 
-1. Load `skills/frappe-core/SKILL.md` and its review checklist
-   (`skills/frappe-core/references/review-checklist.md`) and follow them.
+1. Load `skills/frappe-code-review/SKILL.md` and follow its 79-rule
+   checklist (FR-001–FR-082; canonical rules in
+   `irfanzahoor/frappe-sensei`). If a deterministic result is needed, run
+   the Sensei checker as the skill describes and use its findings as the base.
 2. For Server Scripts, also load `skills/frappe-server-scripts/SKILL.md`;
    for anything version-specific, also load `skills/frappe-upgrade/SKILL.md`.
 3. Check, in order: code placement (own DocType files vs hooks/fixtures for
@@ -21,13 +23,15 @@ Review the Frappe/ERPNext code at `$ARGUMENTS`.
 
 ## Output
 
-A findings table, ordered by severity:
+A findings table, ordered by severity, with the Sensei rule ID for every
+finding:
 
 | Severity | File:line | Rule broken | Suggested fix |
 |---|---|---|---|
-| blocker / major / minor | ... | ... | ... |
+| blocker / major / minor | ... | FR-0xx — title | ... |
 
-End with a one-line verdict — approve, approve with fixes, or needs rework —
+End with a one-line verdict — approve, approve with fixes, or needs rework
+(any blocker means needs rework, else any major means approve with fixes) —
 and the commands to run (`migrate`, `bench build --app <app>`, `clear-cache`)
 if the change needs them. Read code only; do not edit files unless the user
 asks for a fix.

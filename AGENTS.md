@@ -7,6 +7,7 @@ This works with Claude, Codex, Cursor, Gemini, Copilot and others.
 
 | Task | Read |
 |---|---|
+| Review code before merge or ship | `skills/frappe-code-review/SKILL.md` |
 | Server Script (UI) | `skills/frappe-server-scripts/SKILL.md` |
 | Reports, print formats, Jinja | `skills/frappe-reports-print/SKILL.md` |
 | Slow code, caching, background jobs | `skills/frappe-performance/SKILL.md` |
