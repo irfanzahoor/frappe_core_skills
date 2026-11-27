@@ -18,6 +18,8 @@ description: Frappe website and portal - Web Pages, Web Forms, www/ pages, porta
 ```python
 # myapp/www/orders.py
 import frappe
+from frappe import _
+
 no_cache = 1
 def get_context(context):
     if frappe.session.user == "Guest":
@@ -29,7 +31,7 @@ def get_context(context):
 ## Security
 - Keep CSRF on. Never `ignore_csrf` in production.
 - Guest endpoints: `allow_guest=True` only when needed, read-only where possible, rate-limited.
-- Never trust `frappe.form_dict`. Validate it and escape output (Jinja autoescapes, so don't use `| safe` on user data).
+- Never trust `frappe.form_dict`. Validate it and escape output: Frappe Jinja does **not** autoescape, so use `{{ value | e }}` on user data and never `| safe` (see frappe-security).
 - Use `has_website_permission` hooks for doc-level portal access.
 - Don't expose internal DocType names or private files in guest URLs.
 

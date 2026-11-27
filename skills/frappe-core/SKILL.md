@@ -81,6 +81,15 @@ Never edit other apps' files. Never put our DocType's form code in `public/js`.
 | REST API, webhooks, OAuth, external APIs, Data Import | frappe-integrations |
 | Website, portal, Web Forms, www pages | frappe-website |
 | Workspaces, dashboards, custom Pages, dialogs, Vue SPA | frappe-ui |
+| Roles, User Permissions, has_permission, 403s | frappe-permissions |
+| Scheduler events, background jobs, queues | frappe-scheduler |
+| Security audit: SQLi, XSS, secrets, guest access | frappe-security |
+| Data Import, bulk updates, migration, cleanup | frappe-data |
+| Selling/buying/stock/accounts/HRMS flows | frappe-erpnext-modules |
+| Code review against the FR rule checklist | frappe-code-review |
+| Studio low-code apps (v16.60+) | frappe-studio |
+| Flow AI assistant/agents (v16.60+) | frappe-flow |
+| Insights BI dashboards | frappe-insights |
 
 ## Finishing
 

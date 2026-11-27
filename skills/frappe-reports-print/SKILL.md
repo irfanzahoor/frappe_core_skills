@@ -33,7 +33,7 @@ def execute(filters=None):
 
 
 def validate_filters(filters):
-    if filters.from_date > filters.to_date:
+    if filters.from_date and filters.to_date and filters.from_date > filters.to_date:
         frappe.throw(_("From Date cannot be after To Date"))
 
 

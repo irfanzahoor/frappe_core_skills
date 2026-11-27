@@ -33,7 +33,8 @@ Rules:
 - Test behaviour: validations throw, totals compute, submit/cancel work, permissions deny.
 - Create the test data inside the test, or with `test_records.json` next to the DocType.
   Don't depend on production data.
-- Check permissions with `frappe.set_user("test@example.com")`, and restore with `frappe.set_user("Administrator")`.
+- Check permissions with `frappe.set_user("test@example.com")`, and always restore the user in
+  `tearDown` or a `finally` block (`frappe.set_user("Administrator")`) so a failing test can't leak it.
 - Mock external HTTP calls (`unittest.mock.patch`). Never call real APIs in tests.
 
 ## Run

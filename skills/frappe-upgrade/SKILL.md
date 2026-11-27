@@ -21,7 +21,7 @@ Upgrade one major version at a time. Check `__version__` before using anything b
 | `convert_utc_to_user_timezone()` | `convert_utc_to_system_timezone()` |
 | `get_time_zone()` | `get_system_timezone()` |
 | JS `window.get_today` / `show_alert` / `user` / `roles` | `frappe.datetime.get_today`, `frappe.show_alert`, `frappe.session.user`, `frappe.user_roles` |
-| `this` in Client Scripts | `frm` / `cur_frm` |
+| `this` in Client Scripts | the `frm` handler argument (not `cur_frm`) |
 
 Also: Server Scripts are disabled by default, Vue 3, Node 18+, `pyproject.toml`, and the
 last method override wins. Event Streaming moved to its own app.

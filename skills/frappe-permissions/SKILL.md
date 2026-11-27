@@ -23,9 +23,10 @@ User Permissions, document sharing, and any `has_permission` hook.
   Branch: `frappe.permissions.add_user_permission("Company", "My Co", user)`.
 - It filters lists, links and reports. A user who sees an empty list usually
   has a User Permission hiding the documents.
-- `frappe.get_list` and `frappe.get_all` apply User Permissions automatically.
-  `frappe.db.sql` bypasses **all** permission checks — never use it for
-  user-facing reads.
+- `frappe.get_list` applies role and User Permissions automatically.
+  `frappe.get_all` does **not** (it is `get_list` with `ignore_permissions=True`),
+  and `frappe.db.sql` bypasses **all** permission checks — never use either
+  for user-facing reads.
 
 ## 3. `has_permission` and `permission_query_conditions`
 
@@ -77,8 +78,8 @@ def get_order_total(name):
 
 - Desk and `/api/resource/...` run the same checks. If it works in Desk but
   fails from the API, the API user (token owner) lacks the role.
-- `frappe.get_list` is permission-aware; `frappe.get_all` is too, unless
-  `ignore_permissions=True` is passed in trusted server code.
+- `frappe.get_list` is permission-aware; `frappe.get_all` skips permission
+  checks — use it only in trusted server code.
 
 ## 403? Check in this order
 
